@@ -22,9 +22,16 @@
 ### Files & Navigation
 | Key | Action |
 |-----|--------|
-| `<Space>ff` | Find files |
+| `<Space>ff` | Find files (all) |
+| `<Space>fG` | Find files (git) |
+| `<Space>fr` | Recent files |
 | `<Space>fg` | Search in files (grep) |
+| `<Space>fc` | Find word under cursor |
+| `<Space>f/` | Search in current buffer |
 | `<Space>fb` | List buffers |
+| `<Space>fs` | Document symbols |
+| `<Space>fS` | Workspace symbols |
+| `<Space>fd` | Diagnostics (errors) |
 | `<Space>e` | File explorer |
 | `<Space>w` | Save file |
 | `<Space>q` | Quit |
@@ -81,11 +88,13 @@
 ## Telescope (Fuzzy Finder)
 
 Inside Telescope:
-- `<C-j>` / `<C-k>` - Navigate
+- `<C-j>` / `<C-k>` - Navigate results
 - `<CR>` - Open file
-- `<Esc>` - Close
+- `<Esc>` / `q` - Close
 - `<C-v>` - Open in vertical split
 - `<C-x>` - Open in horizontal split
+- `<C-q>` - Send to quickfix list
+- `<C-d>` - Delete buffer (in buffer list)
 
 ## Oil (File Explorer)
 
@@ -100,8 +109,10 @@ Inside Telescope:
 ## Tips
 
 - **Search project**: `<Space>fg` then type your query
-- **Jump to file**: `<Space>ff` then type filename
+- **Jump to file**: `<Space>ff` (all files) or `<Space>fG` (git files, faster)
 - **Browse files**: `<Space>e` for file explorer
+- **Find symbol**: `<Space>fs` for current file, `<Space>fS` for workspace
+- **Search errors**: `<Space>fd` to see all diagnostics
 - **Quick help**: `<Space>fh` then search help topics
 - **Code actions**: Put cursor on error, press `<Space>ca`
 - **Rename everywhere**: `<Space>rn` on symbol

@@ -4,6 +4,18 @@ return {
   keys = {
     { "<leader>e", "<cmd>Oil<cr>", desc = "Open file explorer" },
   },
+  init = function()
+    -- Open Oil when starting with a directory argument
+    vim.api.nvim_create_autocmd("VimEnter", {
+      group = vim.api.nvim_create_augroup("oil_hijack", { clear = true }),
+      callback = function()
+        local arg = vim.fn.argv(0)
+        if arg and vim.fn.isdirectory(arg) == 1 then
+          vim.cmd("Oil " .. arg)
+        end
+      end,
+    })
+  end,
   opts = {
     default_file_explorer = true,
     columns = {
