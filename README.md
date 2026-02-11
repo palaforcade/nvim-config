@@ -1,162 +1,152 @@
-# Minimal Neovim Configuration
+# Neovim Keyboard Shortcuts
 
-A super lightweight Neovim setup with modern LSP, Treesitter, and a clean Catppuccin Mocha theme.
+Minimal Neovim configuration with LSP, Telescope fuzzy finder, and Oil file explorer.
 
-## Features
+> **Leader Key:** `Space`
 
-- **Colorscheme**: Catppuccin Mocha
-- **LSP**: Language Server Protocol with Mason
-- **Completion**: nvim-cmp with LSP integration
-- **Syntax**: Treesitter for advanced highlighting
-- **Navigation**: Telescope (fuzzy finder) + Oil (file explorer)
-- **UI**: Mini.statusline + Gitsigns
-- **Performance**: <50ms startup time
+## File Navigation
 
-## Installation
+| Shortcut | Action |
+|----------|--------|
+| `<Space>e` | Open file explorer (Oil) |
+| `<Space>ff` | Find files (all files) |
+| `<Space>fG` | Find files (git files only - faster) |
+| `<Space>fr` | Recent files |
+| `<Space>fb` | List open buffers |
+| `<Space>f/` | Search in current buffer |
 
-1. Backup your existing config:
-   ```bash
-   mv ~/.config/nvim ~/.config/nvim.backup
-   ```
+## Search
 
-2. Clone or copy this config to `~/.config/nvim`
+| Shortcut | Action |
+|----------|--------|
+| `<Space>fg` | Live grep (search text in all files) |
+| `<Space>fc` | Find word under cursor |
+| `<Space>fh` | Search help docs |
 
-3. Launch Neovim:
-   ```bash
-   nvim
-   ```
-   Lazy.nvim will automatically install on first launch.
+## Code Navigation (LSP)
 
-4. Install plugins:
-   ```
-   :Lazy sync
-   ```
+| Shortcut | Action |
+|----------|--------|
+| `<Space>fs` | Document symbols (functions, classes in current file) |
+| `<Space>fS` | Workspace symbols (search symbols in entire project) |
+| `<Space>fd` | Show all diagnostics (errors/warnings) |
+| `gd` | Go to definition |
+| `gr` | Go to references |
+| `gI` | Go to implementation |
+| `K` | Show documentation |
+| `[d` | Previous diagnostic |
+| `]d` | Next diagnostic |
+| `<Space>d` | Show diagnostic float |
 
-5. Install LSP servers:
-   ```
-   :Mason
-   ```
-   Press `i` to install servers (lua_ls is pre-configured)
+## Code Actions
 
-## Key Bindings
+| Shortcut | Action |
+|----------|--------|
+| `<Space>ca` | Code actions (fixes, refactors) |
+| `<Space>rn` | Rename symbol |
 
-### Leader Key
-`Space` - Leader key
+## Git
 
-### Navigation
-- `<C-h/j/k/l>` - Navigate between windows
-- `<leader>ff` - Find files (Telescope)
-- `<leader>fg` - Live grep (Telescope)
-- `<leader>fb` - List buffers (Telescope)
-- `<leader>fh` - Help tags (Telescope)
-- `<leader>e` - Open file explorer (Oil)
+| Shortcut | Action |
+|----------|--------|
+| `]h` | Next change |
+| `[h` | Previous change |
+| `<Space>hp` | Preview change |
+| `<Space>hs` | Stage change |
+| `<Space>hr` | Reset change |
+| `<Space>hb` | Blame line |
 
-### LSP
-- `gd` - Go to definition
-- `gr` - Go to references
-- `gI` - Go to implementation
-- `K` - Hover documentation
-- `<leader>ca` - Code actions
-- `<leader>rn` - Rename symbol
-- `[d` / `]d` - Navigate diagnostics
-- `<leader>d` - Show diagnostic float
+## Window Management
 
-### Git
-- `]h` / `[h` - Next/previous hunk
-- `<leader>hs` - Stage hunk
-- `<leader>hr` - Reset hunk
-- `<leader>hp` - Preview hunk
-- `<leader>hb` - Blame line
+| Shortcut | Action |
+|----------|--------|
+| `<C-h>` | Move to left window |
+| `<C-j>` | Move to lower window |
+| `<C-k>` | Move to upper window |
+| `<C-l>` | Move to right window |
 
-### Editing
-- `<leader>w` - Save file
-- `<leader>q` - Quit
-- `<leader>bd` - Delete buffer
-- `<Esc>` - Clear search highlight
-- `<` / `>` - Indent (visual mode, stays selected)
+## Editing
 
-## Structure
+| Shortcut | Action |
+|----------|--------|
+| `<Space>w` | Save file |
+| `<Space>q` | Quit |
+| `<Space>bd` | Close buffer |
+| `<Esc>` | Clear search highlight |
+| `<` | Indent left (visual mode) |
+| `>` | Indent right (visual mode) |
+| `J` | Move line down (visual mode) |
+| `K` | Move line up (visual mode) |
+| `p` | Paste without yanking (visual mode) |
 
-```
-~/.config/nvim/
-├── init.lua                    # Entry point
-├── lua/
-│   ├── config/
-│   │   ├── lazy.lua           # Plugin manager bootstrap
-│   │   ├── options.lua        # Neovim settings
-│   │   ├── keymaps.lua        # Key bindings
-│   │   └── autocmds.lua       # Auto commands
-│   └── plugins/
-│       ├── colorscheme.lua    # Catppuccin theme
-│       ├── treesitter.lua     # Syntax highlighting
-│       ├── lsp.lua            # LSP configuration
-│       ├── completion.lua     # Completion engine
-│       ├── telescope.lua      # Fuzzy finder
-│       ├── ui.lua             # Statusline + Git signs
-│       └── oil.lua            # File explorer
-```
+## Scrolling
 
-## Adding LSP Servers
+| Shortcut | Action |
+|----------|--------|
+| `<C-d>` | Scroll down (centered) |
+| `<C-u>` | Scroll up (centered) |
+| `n` | Next search result (centered) |
+| `N` | Previous search result (centered) |
 
-1. Open Mason: `:Mason`
-2. Navigate with `j/k`, press `i` to install
-3. Common servers:
-   - `lua_ls` - Lua
-   - `pyright` - Python
-   - `ts_ls` - TypeScript/JavaScript
-   - `rust_analyzer` - Rust
-   - `gopls` - Go
+## Completion (Insert Mode)
 
-Servers are automatically configured when installed via Mason.
+| Shortcut | Action |
+|----------|--------|
+| `<C-Space>` | Trigger completion |
+| `<C-n>` | Next suggestion |
+| `<C-p>` | Previous suggestion |
+| `<CR>` | Confirm selection |
+| `<Tab>` | Next item / expand snippet |
+| `<S-Tab>` | Previous item |
 
-## Performance
+## Telescope Picker
 
-Check startup time:
-```
-:Lazy profile
-```
+Inside Telescope fuzzy finder:
 
-Expected: <50ms with 2 plugins loaded at startup (colorscheme, treesitter).
+| Shortcut | Action |
+|----------|--------|
+| `<C-j>` | Next result |
+| `<C-k>` | Previous result |
+| `<CR>` | Open file |
+| `<Esc>` / `q` | Close |
+| `<C-v>` | Open in vertical split |
+| `<C-x>` | Open in horizontal split |
+| `<C-q>` | Send to quickfix list |
+| `<C-d>` | Delete buffer (in buffer list) |
 
-## Customization
+## Oil File Explorer
 
-- **Add keybindings**: Edit `lua/config/keymaps.lua`
-- **Change options**: Edit `lua/config/options.lua`
-- **Add plugins**: Create new files in `lua/plugins/`
-- **Modify theme**: Edit `lua/plugins/colorscheme.lua`
+Inside Oil:
 
-## Philosophy
+| Shortcut | Action |
+|----------|--------|
+| `<CR>` | Open file/directory |
+| `-` | Go to parent directory |
+| `g.` | Toggle hidden files |
+| `<C-s>` | Open in vertical split |
+| `<C-h>` | Open in horizontal split |
+| `<C-c>` | Close Oil |
+| `g?` | Show help |
 
-This config prioritizes:
-- **Speed**: Aggressive lazy-loading
-- **Minimalism**: No sidebars, command-based navigation
-- **Simplicity**: ~10 core plugins, clear structure
-- **Maintainability**: Modular Lua files
+## Commands
 
-## Troubleshooting
+| Command | Description |
+|---------|-------------|
+| `:Lazy` | Plugin manager |
+| `:Mason` | Install LSP servers |
+| `:Telescope` | Fuzzy finder |
+| `:Oil` | File explorer |
+| `:checkhealth` | System diagnostics |
 
-### Check health
-```
-:checkhealth
-```
+## Quick Start
 
-### Plugin issues
-```
-:Lazy
-```
-Press `U` to update plugins, `X` to clean unused plugins.
+1. **Find a file:** `<Space>ff` then type filename
+2. **Search in project:** `<Space>fg` then type search term
+3. **Browse files:** `<Space>e` to open file explorer
+4. **Go to definition:** Put cursor on function, press `gd`
+5. **Fix errors:** Put cursor on error, press `<Space>ca`
 
-### LSP not working
-1. Verify server is installed: `:Mason`
-2. Check LSP status: `:LspInfo`
-3. Check logs: `:lua vim.cmd('e ' .. vim.lsp.get_log_path())`
+---
 
-### Treesitter issues
-```
-:TSInstall <language>
-:TSUpdate
-```
-
-## License
-
-MIT
+**Installation:** Clone to `~/.config/nvim`, run `nvim` and `:Lazy sync`
+**Add LSP servers:** `:Mason` then press `i` to install
