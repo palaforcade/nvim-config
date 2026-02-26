@@ -7,6 +7,8 @@ keymap("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
 keymap("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
 
 -- Buffer management
+keymap("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
+keymap("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 keymap("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
 
 -- Quick save/quit
