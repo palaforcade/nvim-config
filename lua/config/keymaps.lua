@@ -13,7 +13,8 @@ keymap("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete buffer" })
 
 -- Quick save/quit
 keymap("n", "<leader>w", "<cmd>w<cr>", { desc = "Save file" })
-keymap("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
+keymap("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
+keymap("n", "<leader>x", "<cmd>w | bdelete<cr>", { desc = "Save and close buffer" })
 
 -- Clear search highlight
 keymap("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
