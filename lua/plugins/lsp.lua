@@ -39,6 +39,16 @@ return {
           map("[d", vim.diagnostic.goto_prev, "Previous diagnostic")
           map("]d", vim.diagnostic.goto_next, "Next diagnostic")
           map("<leader>d", vim.diagnostic.open_float, "Show diagnostic")
+
+          -- Enable inlay hints when supported (e.g. vtsls, lua_ls)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client and client:supports_method("textDocument/inlayHint") then
+            vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+            map("<leader>th", function()
+              local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })
+              vim.lsp.inlay_hint.enable(not enabled, { bufnr = event.buf })
+            end, "Toggle inlay hints")
+          end
         end,
       })
 
@@ -70,6 +80,7 @@ return {
       mason_lspconfig.setup({
         ensure_installed = {
           "lua_ls",
+          "vtsls",
         },
         automatic_installation = true,
         handlers = {
@@ -96,6 +107,36 @@ return {
                   },
                   telemetry = {
                     enable = false,
+                  },
+                },
+              },
+            })
+          end,
+          -- Custom handler for vtsls (modern TypeScript/JavaScript LSP)
+          ["vtsls"] = function()
+            require("lspconfig").vtsls.setup({
+              capabilities = capabilities,
+              settings = {
+                typescript = {
+                  updateImportsOnFileMove = { enabled = "always" },
+                  inlayHints = {
+                    parameterNames = { enabled = "literals" },
+                    parameterTypes = { enabled = true },
+                    variableTypes = { enabled = true },
+                    propertyDeclarationTypes = { enabled = true },
+                    functionLikeReturnTypes = { enabled = true },
+                    enumMemberValues = { enabled = true },
+                  },
+                },
+                javascript = {
+                  updateImportsOnFileMove = { enabled = "always" },
+                  inlayHints = {
+                    parameterNames = { enabled = "literals" },
+                    parameterTypes = { enabled = true },
+                    variableTypes = { enabled = true },
+                    propertyDeclarationTypes = { enabled = true },
+                    functionLikeReturnTypes = { enabled = true },
+                    enumMemberValues = { enabled = true },
                   },
                 },
               },

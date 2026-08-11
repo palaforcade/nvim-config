@@ -10,6 +10,10 @@ return {
       "vimdoc",
       "query",
       "c",
+      "javascript",
+      "typescript",
+      "tsx",
+      "prisma",
     },
     -- Auto-install missing parsers when entering buffer
     auto_install = true,
