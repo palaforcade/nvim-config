@@ -20,6 +20,8 @@ return {
     -- Enable syntax highlighting
     highlight = {
       enable = true,
+      -- sql handled by dbtpal's regex syntax file (Jinja-aware); treesitter would clobber it
+      disable = { "sql" },
       additional_vim_regex_highlighting = false,
     },
     -- Enable indentation
