@@ -81,6 +81,8 @@ return {
         ensure_installed = {
           "lua_ls",
           "vtsls",
+          "pyright",
+          "ruff",
         },
         automatic_installation = true,
         handlers = {
@@ -110,6 +112,15 @@ return {
                   },
                 },
               },
+            })
+          end,
+          -- Custom handler for ruff (linting/code actions only; pyright covers hover)
+          ["ruff"] = function()
+            require("lspconfig").ruff.setup({
+              capabilities = capabilities,
+              on_attach = function(client, _)
+                client.server_capabilities.hoverProvider = false
+              end,
             })
           end,
           -- Custom handler for vtsls (modern TypeScript/JavaScript LSP)

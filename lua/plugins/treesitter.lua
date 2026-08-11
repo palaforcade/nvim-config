@@ -14,6 +14,7 @@ return {
       "typescript",
       "tsx",
       "prisma",
+      "python",
     },
     -- Auto-install missing parsers when entering buffer
     auto_install = true,

@@ -16,7 +16,7 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
-        python = { "black" },
+        python = { "ruff_organize_imports", "ruff_format" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
         typescript = { "prettierd", "prettier", stop_after_first = true },
         javascriptreact = { "prettierd", "prettier", stop_after_first = true },
@@ -47,6 +47,7 @@ return {
       ensure_installed = {
         "stylua",
         "prettierd",
+        "ruff",
       },
     },
   },
