@@ -4,10 +4,10 @@ return {
     "christoomey/vim-tmux-navigator",
     lazy = false,
     keys = {
-      { "<C-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Navigate left" },
-      { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Navigate down" },
-      { "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Navigate up" },
-      { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Navigate right" },
+      { "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", desc = "Navigate left", mode = { "n", "i", "v", "t" } },
+      { "<C-j>", "<Cmd>TmuxNavigateDown<CR>", desc = "Navigate down", mode = { "n", "i", "v", "t" } },
+      { "<C-k>", "<Cmd>TmuxNavigateUp<CR>", desc = "Navigate up", mode = { "n", "i", "v", "t" } },
+      { "<C-l>", "<Cmd>TmuxNavigateRight<CR>", desc = "Navigate right", mode = { "n", "i", "v", "t" } },
     },
   },
 
@@ -22,6 +22,7 @@ return {
         { "<leader>f", group = "find" },
         { "<leader>h", group = "git hunks" },
         { "<leader>b", group = "buffer" },
+        { "<leader>a", group = "AI chat" },
       },
     },
   },
