@@ -45,3 +45,6 @@ opt.mouse = "a"
 -- Disable netrw (using Oil instead)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- ZenStack schema files: syntax is a superset of Prisma's
+vim.filetype.add({ extension = { zmodel = "prisma" } })
