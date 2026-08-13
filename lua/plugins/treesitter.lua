@@ -9,6 +9,8 @@ local parsers = {
   "tsx",
   "prisma",
   "python",
+  "markdown",
+  "markdown_inline",
 }
 
 -- filetypes whose treesitter language name differs from the filetype
@@ -27,6 +29,7 @@ local filetypes = vim.list_extend(vim.tbl_keys(ft_overrides), {
   "typescript",
   "prisma",
   "python",
+  "markdown",
 })
 
 return {
