@@ -83,6 +83,7 @@ return {
           "vtsls",
           "pyright",
           "ruff",
+          "terraformls",
         },
         automatic_installation = true,
         handlers = {

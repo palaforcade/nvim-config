@@ -11,6 +11,8 @@ local parsers = {
   "python",
   "markdown",
   "markdown_inline",
+  "hcl",
+  "terraform",
 }
 
 -- filetypes whose treesitter language name differs from the filetype
@@ -18,6 +20,7 @@ local ft_overrides = {
   help = "vimdoc",
   typescriptreact = "tsx",
   javascriptreact = "javascript",
+  ["terraform-vars"] = "terraform",
 }
 
 local filetypes = vim.list_extend(vim.tbl_keys(ft_overrides), {
@@ -30,6 +33,8 @@ local filetypes = vim.list_extend(vim.tbl_keys(ft_overrides), {
   "prisma",
   "python",
   "markdown",
+  "hcl",
+  "terraform",
 })
 
 return {
