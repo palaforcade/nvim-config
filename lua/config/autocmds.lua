@@ -42,6 +42,22 @@ autocmd("FileType", {
   end,
 })
 
+-- Auto-cd to the git repo root (tab-local) so tools that rely on cwd
+-- (git-conflict.nvim, telescope, etc.) work regardless of which file/subdir
+-- a buffer was opened from
+autocmd("BufEnter", {
+  group = augroup("auto_root", { clear = true }),
+  callback = function(event)
+    if vim.bo[event.buf].buftype ~= "" then
+      return
+    end
+    local root = vim.fs.root(event.buf, ".git")
+    if root and root ~= vim.fn.getcwd() then
+      vim.cmd.tcd(root)
+    end
+  end,
+})
+
 -- Auto-create directories on save
 autocmd("BufWritePre", {
   group = augroup("auto_create_dir", { clear = true }),
