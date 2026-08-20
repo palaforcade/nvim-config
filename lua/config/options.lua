@@ -1,5 +1,10 @@
 local opt = vim.opt
 
+-- Directory nvim was launched from, before auto-root (see autocmds.lua) or
+-- any plugin changes the working directory. Telescope stays scoped here so
+-- monorepo searches don't balloon out to the whole repo root.
+vim.g.launch_cwd = vim.fn.getcwd()
+
 -- Line numbers
 opt.number = true
 opt.relativenumber = true

@@ -71,8 +71,20 @@ return {
       },
       pickers = {
         find_files = {
+          cwd = vim.g.launch_cwd,
           hidden = true,
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        },
+        git_files = {
+          cwd = vim.g.launch_cwd,
+          -- keep scoped to launch_cwd instead of jumping to the repo root
+          use_git_root = false,
+        },
+        live_grep = {
+          cwd = vim.g.launch_cwd,
+        },
+        grep_string = {
+          cwd = vim.g.launch_cwd,
         },
         buffers = {
           sort_mru = true,
